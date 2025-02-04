@@ -127,12 +127,12 @@ this.name = 'OpenAIError';
 
 }
 
-export function handleOpenAIError(error: any): never {
+export function handleOpenAIError(): never {
 
-if (error.response) {
+// if (error.response) {
 
-throw new OpenAIError(`OpenAI API Error: ${error.response.data.error.message}`, error.response.status);
-}
+// throw new OpenAIError(`OpenAI API Error: ${error.response.data.error.message}`, error.response.status);
+// }
 
 throw new OpenAIError('Failed to connect to OpenAI API');
 
