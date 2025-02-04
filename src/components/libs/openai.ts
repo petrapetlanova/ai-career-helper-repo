@@ -16,7 +16,7 @@ matching: string[];
 
 missing: string[];
 
-additional: string[];
+additionalSkills: string[];
 };
 
 recommendations: string[];
@@ -75,15 +75,13 @@ return JSON.parse(content) as MatchAnalysisResult;
 
 }
 
-export async function generateCoverLetter({ resumeText, jobDescription, highlights }: CoverLetterRequest): Promise<string> {
+export async function generateCoverLetter({ resumeText, jobDescription }: CoverLetterRequest): Promise<string> {
 
 const prompt = `
 
 Resume: ${resumeText}
 
 Job Description: ${jobDescription}
-
-${highlights ? `Key Highlights to Include: ${highlights.join(', ')}` : ''}
 
 Generate a professional cover letter that:
 

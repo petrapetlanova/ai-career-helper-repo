@@ -29,10 +29,22 @@ export default function JobMatchAnalysis() {
       setAnalysis(data);
     } catch (err) {
       setError("Failed to analyze job match");
+      console.error(err);
     } finally {
       setLoading(false);
     }
   };
+
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold mb-8">Job Match Analysis</h1>
+        <div className="bg-red-100 text-red-700 p-4 rounded-lg shadow-lg">
+          {error}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -118,7 +130,7 @@ export default function JobMatchAnalysis() {
                 Additional Skills
               </h3>
               <ul className="list-disc pl-4">
-                {analysis.skillsAnalysis.additional.map((skill, index) => (
+                {analysis.skillsAnalysis.additionalSkills.map((skill, index) => (
                   <li key={index}>{skill}</li>
                 ))}
               </ul>
